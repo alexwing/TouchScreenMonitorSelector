@@ -10,6 +10,10 @@
   Desarrollada con <strong>Tauri 2</strong>, <strong>Rust (Win32 API + Registro)</strong>, <strong>React 19</strong> y <strong>Tailwind CSS v4</strong>.
 </p>
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="TouchScreen Monitor Selector Screenshot" width="460" />
+</p>
+
 ---
 
 ## Características
