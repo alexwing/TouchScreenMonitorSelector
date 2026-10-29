@@ -1,0 +1,23 @@
+[package]
+name = "touchscreen-monitor-selector"
+version = "1.0.0"
+description = "TouchScreen Monitor Selector - Bind touch digitizers to monitors on Windows"
+authors = ["alexwing"]
+edition = "2021"
+
+[lib]
+name = "tauri_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-ico", "image-png"] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+winreg = "0.55"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2"

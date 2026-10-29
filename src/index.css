@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface-0: #131520;
+  --color-surface-1: #1a1d2d;
+  --color-surface-2: #22263a;
+  --color-surface-3: #2c314a;
+  --color-border: #333956;
+  --color-border-hover: #475075;
+  --color-text-primary: #f1f3f9;
+  --color-text-secondary: #949bb8;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #fbbf24;
+  --color-accent-glow: rgba(245, 158, 11, 0.25);
+  --color-success: #10b981;
+  --color-success-glow: rgba(16, 185, 129, 0.22);
+}
+
+@layer base {
+  body {
+    font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: transparent;
+    color: var(--color-text-primary);
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+/* Monitor Layout Selector extracted & adapted from kindleCustomSO/tauri_app */
+.monitor-layout {
+  position: relative;
+  width: 100%;
+  max-height: 155px;
+  margin-top: 6px;
+  border-radius: 10px;
+  background-color: rgba(8, 10, 18, 0.55);
+  border: 1px dashed var(--color-border);
+  overflow: hidden;
+}
+
+.monitor-tile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 7px;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface-1);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.18s ease;
+}
+
+.monitor-tile strong {
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.monitor-tile:hover {
+  border-color: rgba(245, 158, 11, 0.55);
+  background-color: var(--color-surface-2);
+}
+
+.monitor-tile.selected {
+  border: 2px solid var(--color-accent);
+  background-color: rgba(245, 158, 11, 0.14);
+  color: var(--color-accent);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.18);
+  z-index: 2;
+}
+
+.monitor-tile.mapped-active:not(.selected) {
+  border-color: rgba(16, 185, 129, 0.65);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
